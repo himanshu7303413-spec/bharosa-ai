@@ -1,0 +1,8 @@
+{% extends "core/base.html" %}{% block body %}
+<h1>Bharosa, <em>but verified.</em></h1><p class="sub mono type">Mask private data. Break your AI before others do. Know your DPDP score.</p>
+<div class="grid"><div class="card"><div class="big" data-count="{{ total }}">0</div><span class="mut">Requests handled</span></div>
+<div class="card"><div class="big" data-count="{{ pii }}">0</div><span class="mut">Personal items masked</span></div>
+<div class="card"><div class="big" data-count="{{ types|length }}">0</div><span class="mut">Kinds of PII caught</span></div></div>
+<div class="card"><b>What we masked</b>{% for l,c,p in types %}<div class="bar"><span class="mono">{{ l }}</span><i data-w="{{ p }}"></i><b>{{ c }}</b></div>{% empty %}<p class="mut">No private data seen yet.</p>{% endfor %}<p class="mut mono" style="font-size:13px">Shortcuts: <kbd>Alt</kbd>+<kbd>H</kbd> <kbd>G</kbd> <kbd>R</kbd> <kbd>D</kbd> <kbd>K</kbd></p></div>
+<div class="card"><b>Recent activity</b>{% for l in logs %}<p class="mut"><b>{{ l.kind }}</b> &middot; {{ l.created|date:"d M, H:i" }} &middot; {{ l.pii_count }} masked<br>{{ l.prompt_masked|truncatechars:90 }}</p>{% empty %}<p class="mut">Nothing yet. Try the LLM Gateway.</p>{% endfor %}</div>
+{% endblock %}

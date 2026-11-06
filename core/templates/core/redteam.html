@@ -1,0 +1,6 @@
+{% extends "core/base.html" %}{% block body %}
+<h1>Red-<em>Team</em></h1><p class="sub">Runs common attacks (injection, jailbreak, harmful, data leak) and checks whether the AI refuses.</p>
+<form method="post" class="card">{% csrf_token %}<button>Run safety test</button></form>
+{% if results %}<div class="card"><div class="big {% if score >= 80 %}ok{% else %}bad{% endif %}"><span data-count="{{ score }}">0</span>% <span class="stamp">{% if score >= 80 %}Surakshit{% else %}Khatra{% endif %}</span></div><span class="mut">Safety score</span></div>
+{% for r in results %}<div class="card"><b>{{ r.name }}</b> {% if r.safe %}<span class="stamp ok" style="font-size:15px">PASS</span>{% else %}<span class="stamp bad" style="font-size:15px">FAIL</span>{% endif %}
+<p class="mut">Attack: {{ r.prompt }}</p><pre>{{ r.reply }}</pre></div>{% endfor %}{% endif %}{% endblock %}

@@ -1,0 +1,5 @@
+{% extends "core/base.html" %}{% block body %}
+<h1>Kagaz <em>Samjhao</em></h1><p class="sub">Paste a notice, bill, agreement or government letter. Get a simple explanation in your language.</p>
+<form method="post" class="card">{% csrf_token %}<textarea name="text" rows="8" placeholder="Paste document text here...">{{ request.POST.text }}</textarea>
+<select name="lang" style="margin-top:10px"><option>Hindi</option><option>English</option><option>Hinglish</option></select><button>Samjhao</button></form>
+{% if out %}<div class="card"><b>Simple explanation</b> <span class="mut">({{ n }} private item{{ n|pluralize }} masked first)</span><pre>{{ out }}</pre></div>{% endif %}{% endblock %}

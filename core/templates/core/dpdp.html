@@ -1,0 +1,6 @@
+{% extends "core/base.html" %}{% block body %}
+<h1>DPDP <em>Check</em></h1><p class="sub">Answer 8 quick questions about India's Digital Personal Data Protection Act. This is a self-check, not legal advice.</p>
+{% if score is not None %}<div class="card"><div class="big {% if score >= 80 %}ok{% else %}bad{% endif %}"><span data-count="{{ score }}">0</span>/100</div><div class="meter"><i data-w="{{ score }}"></i></div><span class="stamp {% if score >= 80 %}ok{% else %}bad{% endif %}">{{ level }}</span><br><button type="button" onclick="window.print()">Print report</button>
+{% for g in gaps %}<p><span class="bad">Gap:</span> {{ g.q }}<br><span class="mut">Fix: {{ g.fix }}</span></p>{% empty %}<p class="ok">No gaps found. Great work!</p>{% endfor %}</div>{% endif %}
+<form method="post" class="card">{% csrf_token %}{% for key, q, w in questions %}<label class="q">{{ q }}<select name="{{ key }}"><option value="yes">Yes</option><option value="no">No</option></select></label>{% endfor %}<button>Get my report</button></form>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "core/base.html" %}{% block body %}
+<h1>The <em>Gateway</em></h1><p class="sub">Your text is cleaned of Aadhaar, PAN, phone and email before it reaches the AI. API: <code>POST /api/gateway/</code> with {"text": "..."}</p>
+<form method="post" class="card">{% csrf_token %}<textarea name="text" rows="5" placeholder="e.g. My PAN is ABCDE1234F and phone 9876543210. Summarise my loan options."></textarea><button>Send safely</button></form>
+<div class="card"><b>Live preview</b> <span class="mut mono">(nothing leaves your browser until you press send)</span><pre class="live" id="live">Type above...</pre></div>
+<script>
+const P=[['EMAIL',/[\w.+-]+@[\w-]+\.[\w.-]+/g],['AADHAAR',/\b\d{4}\s?\d{4}\s?\d{4}\b/g],['PAN',/\b[A-Z]{5}\d{4}[A-Z]\b/g],['PHONE',/(?:\+91[\s-]?)?\b[6-9]\d{9}\b/g]];
+const ta=document.querySelector('textarea[name=text]'),lv=document.getElementById('live');
+function go(){let t=ta.value.replace(/&/g,'&amp;').replace(/</g,'&lt;');P.forEach(([l,r])=>t=t.replace(r,'@@'+l+'@@'));
+lv.innerHTML=t.replace(/@@([A-Z]+)@@/g,'<span class="redact">$1</span>')||'Type above...'}
+ta.addEventListener('input',go);go();</script>
+{% if reply %}<div class="card"><b>What the AI saw</b> <span class="ok">({{ n }} item{{ n|pluralize }} masked)</span><pre class="redactable">{{ masked }}</pre></div>
+<div class="card"><b>AI reply</b><pre>{{ reply }}</pre></div>{% endif %}{% endblock %}

@@ -1,0 +1,68 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bharosa — भरोसा</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;600&family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3e9d2;--ink:#141414;--saf:#ff6a13;--grn:#0a7a4b;--red:#d7263d;--yel:#ffd23f;--mut:#5b5446;--card:#fffaf0;--inp:#fff}
+[data-theme=dark]{--paper:#141311;--ink:#f3e9d2;--card:#1e1c18;--inp:#0f0e0c;--mut:#a89f8a}
+*{box-sizing:border-box}
+body{margin:0;font:17px/1.6 'Mukta',system-ui,sans-serif;color:var(--ink);background:var(--paper);
+ background-image:linear-gradient(var(--ink) 1px,transparent 1px),linear-gradient(90deg,var(--ink) 1px,transparent 1px);background-size:48px 48px;background-blend-mode:soft-light}
+body::before{content:"";position:fixed;inset:0;background:var(--paper);opacity:.93;z-index:-1}
+h1,h2,.big,.logo,.stamp{font-family:'Archivo Black','Impact',sans-serif;font-weight:400;letter-spacing:-.5px}
+code,pre,.mono,.tick,textarea{font-family:'IBM Plex Mono',monospace}
+header{background:#141414;color:#f3e9d2;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 22px;border-bottom:5px solid var(--saf)}
+.logo{font-size:26px;margin-right:auto;color:var(--yel)}.logo small{font:600 13px 'IBM Plex Mono';color:var(--paper);margin-left:8px;letter-spacing:0}
+header a{color:#f3e9d2;text-decoration:none;font-weight:800;padding:6px 12px;border:2px solid transparent;transition:.15s}
+header a:hover{border-color:var(--saf);color:var(--saf);transform:rotate(-2deg) scale(1.06)}
+.tick{background:var(--saf);color:var(--ink);overflow:hidden;white-space:nowrap;border-bottom:3px solid var(--ink);font-weight:600;font-size:14px}
+.tick div{display:inline-block;padding:5px 0;animation:mq 22s linear infinite}@keyframes mq{to{transform:translateX(-50%)}}
+main{max-width:940px;margin:34px auto 70px;padding:0 20px}
+h1{font-size:clamp(34px,6vw,64px);line-height:1;margin:0 0 12px;text-transform:uppercase}
+h1 em{font-style:normal;background:var(--yel);padding:0 8px;box-shadow:5px 5px 0 var(--ink);display:inline-block;transform:rotate(-1.5deg)}
+.sub{font-size:18px;max-width:640px;margin:0 0 24px;border-left:6px solid var(--grn);padding-left:14px}
+.card{background:var(--card);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:20px;margin:22px 0;position:relative;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translate(-3px,-3px);box-shadow:11px 11px 0 var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.grid .card{margin:0}.grid .card{color:#141414}.grid .card:nth-child(1){background:var(--yel)}.grid .card:nth-child(2){background:#b9f0d4}.grid .card:nth-child(3){background:#ffc9a3}
+.big{font-size:60px;line-height:1}.mut{color:var(--mut)}.ok{color:var(--grn)}.bad{color:var(--red)}
+textarea,select{width:100%;border:3px solid var(--ink);background:var(--inp);color:var(--ink);padding:12px;font-size:15px;border-radius:0;outline:0}
+textarea:focus,select:focus{box-shadow:5px 5px 0 var(--saf)}
+button{font:400 17px 'Archivo Black';background:var(--saf);color:#141414;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:11px 26px;margin-top:14px;cursor:pointer;text-transform:uppercase;transition:.1s}
+button:hover{background:var(--yel)}button:active{transform:translate(5px,5px);box-shadow:0 0 0 var(--ink)}
+pre{white-space:pre-wrap;margin:8px 0 0;font-size:14.5px}
+label.q{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:10px 0;border-bottom:2px dashed var(--ink)}
+label.q select{width:90px;font-weight:800}
+.stamp{display:inline-block;border:4px solid currentColor;padding:2px 12px;font-size:20px;transform:rotate(-8deg);animation:slam .45s cubic-bezier(.2,1.6,.4,1) both;text-transform:uppercase}
+@keyframes slam{from{opacity:0;transform:rotate(-8deg) scale(3.2)}to{opacity:1;transform:rotate(-8deg) scale(1)}}
+.redact{position:relative;display:inline-block;color:var(--paper);background:var(--ink);padding:0 6px;font-weight:600;animation:wipe .7s ease-out both}
+@keyframes wipe{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.meter{height:26px;border:3px solid var(--ink);background:var(--inp);margin:12px 0}.meter i{display:block;height:100%;width:0;background:repeating-linear-gradient(45deg,var(--grn) 0 12px,#12a468 12px 24px);transition:width 1.4s cubic-bezier(.2,.9,.3,1)}
+.rv{opacity:0;transform:translateY(34px) rotate(.6deg);animation:up .6s cubic-bezier(.2,.9,.3,1) forwards}@keyframes up{to{opacity:1;transform:none}}
+.thb{margin:0 0 0 6px;padding:4px 12px;font-size:18px;box-shadow:3px 3px 0 #f3e9d2;border-color:#f3e9d2}
+.bar{display:flex;align-items:center;gap:12px;margin:10px 0;font-weight:800}.bar span{width:90px}.bar i{display:block;height:24px;width:0;flex:1 1 0;max-width:0;background:var(--saf);border:3px solid var(--ink);transition:max-width 1.2s cubic-bezier(.2,.9,.3,1)}
+.curt{position:fixed;inset:0;background:var(--saf);z-index:99;transform:translateY(-100%);pointer-events:none;border-bottom:6px solid var(--ink)}
+.curt.in{animation:cin .38s ease-in forwards}.curt.out{animation:cout .55s .05s ease-out both}
+@keyframes cin{from{transform:translateY(-100%)}to{transform:translateY(0)}}@keyframes cout{from{transform:translateY(0)}to{transform:translateY(-100%)}}
+.live{min-height:70px}kbd{font:600 12px 'IBM Plex Mono';border:2px solid var(--ink);padding:0 6px;box-shadow:2px 2px 0 var(--ink)}
+@media print{header,.tick,form,button,.curt{display:none!important}body{background:#fff}.card{box-shadow:none}}
+.cursor::after{content:"▌";animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+</style></head><body>
+<header><span class="logo">BHAROSA<small>भरोसा</small></span>
+<a href="{% url 'dashboard' %}">Home</a><a href="{% url 'gateway' %}">Gateway</a><a href="{% url 'redteam' %}">Red-Team</a><a href="{% url 'dpdp' %}">DPDP</a><a href="{% url 'kagaz' %}">Kagaz</a><button type="button" class="thb" id="th" title="Theme">◐</button></header><div class="curt out" id="curt"></div>
+<div class="tick"><div>{% for i in "12" %}AADHAAR MASKED ✦ PAN MASKED ✦ PHONE MASKED ✦ EMAIL MASKED ✦ DPDP READY ✦ RED-TEAM TESTED ✦ KAGAZ SAMJHAO ✦ {% endfor %}</div></div>
+<main>{% block body %}{% endblock %}</main>
+<script>
+document.querySelectorAll('main .card,main h1,main .sub').forEach((e,i)=>{e.classList.add('rv');e.style.animationDelay=(i*90)+'ms'});
+document.querySelectorAll('[data-count]').forEach(e=>{const t=+e.dataset.count,s=performance.now();(function f(n){const p=Math.min((n-s)/1100,1);e.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(s)});
+document.querySelectorAll('.bar i').forEach(e=>setTimeout(()=>e.style.maxWidth=e.dataset.w+'%',300));
+document.querySelectorAll('.meter i').forEach(e=>setTimeout(()=>e.style.width=e.dataset.w+'%',300));
+document.querySelectorAll('.redactable').forEach(e=>{e.innerHTML=e.innerHTML.replace(/\[([A-Z]+)_MASKED\]/g,(m,l)=>'<span class="redact">'+l+'</span>')});
+document.querySelectorAll('.type').forEach(e=>{const t=e.textContent;e.textContent='';e.classList.add('cursor');let i=0;(function f(){e.textContent=t.slice(0,++i);if(i<t.length)setTimeout(f,35)})()});
+const R=document.documentElement,sv=localStorage.getItem('th');if(sv)R.dataset.theme=sv;
+document.getElementById('th').onclick=()=>{const d=R.dataset.theme==='dark'?'light':'dark';R.dataset.theme=d;localStorage.setItem('th',d)};
+const C=document.getElementById('curt');setTimeout(()=>C.classList.remove('out'),700);
+document.querySelectorAll('header a').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();C.className='curt in';setTimeout(()=>location.href=a.href,380)}));
+const keys={h:'/',g:'/gateway/',r:'/redteam/',d:'/dpdp/',k:'/kagaz/'};
+addEventListener('keydown',e=>{if(e.altKey&&keys[e.key])location.href=keys[e.key]});
+</script></body></html>
